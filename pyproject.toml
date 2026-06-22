@@ -1,0 +1,16 @@
+[project]
+name = "wb-shop"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6.0.6",
+    "djangorestframework>=3.17.1",
+    "djangorestframework-simplejwt>=5.5.1",
+    "drf-spectacular>=0.29.0",
+    "psycopg2-binary>=2.9.12",
+    "pytest>=9.1.1",
+    "pytest-django>=4.12.0",
+    "python-dotenv>=1.2.2",
+]
