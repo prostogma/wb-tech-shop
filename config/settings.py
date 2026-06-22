@@ -41,12 +41,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
     "rest_framework",
     "drf_spectacular",
-    "users",
-    "products",
-    "carts",
-    "orders",
+    
+    # local apps
+    "apps.users",
+    "apps.products",
+    "apps.carts",
+    "apps.orders",
 ]
 
 MIDDLEWARE = [
@@ -97,8 +100,9 @@ DATABASES = {
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drv_spectacular.openapi.AutoSchema",
-    
-    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
 }
 
 
@@ -137,3 +141,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+
+AUTH_USER_MODEL = "users.User"
