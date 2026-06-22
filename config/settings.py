@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 import os
 from pathlib import Path
+from datetime import timedelta
 
 from dotenv import load_dotenv
 
@@ -99,10 +100,13 @@ DATABASES = {
 # DRF settings
 
 REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "drv_spectacular.openapi.AutoSchema",
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 10,
 }
 
 
@@ -142,5 +146,17 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-
 AUTH_USER_MODEL = "users.User"
+
+# Для работы с jwt
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
+}
+
+# Для swagger
+SPECTACULAR_SETTINGS = {
+    "TITLE": "WB Shop API",
+    "DESCRIPTION": "Test task интернет магазин",
+    "VERSION": "1.0.0",
+}
